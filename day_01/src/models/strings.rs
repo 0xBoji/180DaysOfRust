@@ -62,10 +62,6 @@ fn advanced_string_operations(input: &String) {
     println!("Upper Case: {}", input.to_uppercase());
 }
 
-// Example Usage
-pub fn additional_example() {
-    run();
-}
 /*
 Key Points:
 String vs str: String is a growable, heap-allocated data structure, ideal for when you need to modify or own string data. In contrast, str (often seen as &str) is an immutable, fixed-length string reference.

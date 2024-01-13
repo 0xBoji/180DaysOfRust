@@ -4,6 +4,7 @@ use models::strings;
 use models::functions;
 use models::types;
 use models::arrays;
+use models::vars;
 
 
 fn main() {
@@ -15,7 +16,8 @@ fn main() {
     // strings::run();
     // functions::run();
     // types::run();
-    arrays::run();
+    // arrays::run();
+    vars::run();
 
 
 }
