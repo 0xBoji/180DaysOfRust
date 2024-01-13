@@ -5,6 +5,7 @@ use models::functions;
 use models::types;
 use models::arrays;
 use models::vars;
+use models::cli;
 
 
 fn main() {
@@ -17,7 +18,8 @@ fn main() {
     // functions::run();
     // types::run();
     // arrays::run();
-    vars::run();
+    // vars::run();
+    cli::run();
 
 
 }
