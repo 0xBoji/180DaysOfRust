@@ -64,11 +64,6 @@ pub fn vector_operations() {
     println!("Filtered Nums: {:?}", filtered_nums);
 }
 
-// Example Usage
-pub fn additional_example() {
-    run();
-    vector_operations();
-}
 /* 
 Key Points:
 Creating and Modifying Vectors: Vectors are initialized with Vec<T> and can be modified by adding (push) or removing (pop) elements.
