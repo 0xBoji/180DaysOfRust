@@ -11,7 +11,7 @@ use models::vectors;
 use models::structs;
 use models::conditionals;
 use models::enums;
-use models::pointer_refs;
+use models::pointer_ref;
 
 
 fn main() {
@@ -31,6 +31,6 @@ fn main() {
     // structs::run();
     // conditionals::run();
     // enums::run();
-    // pointer_refs::run();
+    // pointer_ref::run();
 
 }
