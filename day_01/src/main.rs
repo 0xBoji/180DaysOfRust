@@ -1,7 +1,9 @@
 pub mod models;
-// use models::print;
+use models::print;
 use models::strings;
 use models::functions;
+use models::types;
+use models::arrays;
 
 
 fn main() {
@@ -11,7 +13,9 @@ fn main() {
     // //Print from an another file!
     // print::run();
     // strings::run();
-    functions::run();
+    // functions::run();
+    // types::run();
+    arrays::run();
 
 
 }
