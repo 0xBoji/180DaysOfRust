@@ -6,6 +6,12 @@ use models::types;
 use models::arrays;
 use models::vars;
 use models::cli;
+use models::loops;
+use models::vectors;
+use models::structs;
+use models::conditionals;
+use models::enums;
+use models::pointer_refs;
 
 
 fn main() {
@@ -19,7 +25,12 @@ fn main() {
     // types::run();
     // arrays::run();
     // vars::run();
-    cli::run();
-
+    // cli::run();
+    // loops::run();
+    // vectors::run();
+    // structs::run();
+    // conditionals::run();
+    // enums::run();
+    // pointer_refs::run();
 
 }
