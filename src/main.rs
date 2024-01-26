@@ -17,9 +17,15 @@ pub mod day01_to_day03;
 
 //Day04 to day06
 pub mod day04_to_day06;
-use day04_to_day06::shadowing;
-use day04_to_day06::ownership;
-use day04_to_day06::borrowing;
+// use day04_to_day06::shadowing;
+// use day04_to_day06::ownership;
+// use day04_to_day06::borrowing;
+
+
+//Day 07 to day 09
+pub mod day07_to_day09;
+use day07_to_day09::fibonacci;
+
 
 
 fn main() {
@@ -45,6 +51,8 @@ fn main() {
     //Day04 to day06
     // shadowing::run();
     // ownership::run();
-    borrowing::run();
+    // borrowing::run();
+    fibonacci::run();
+
 
 }
