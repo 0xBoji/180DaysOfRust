@@ -24,7 +24,8 @@ pub mod day04_to_day06;
 
 //Day 07 to day 09
 pub mod day07_to_day09;
-use day07_to_day09::fibonacci;
+// use day07_to_day09::fibonacci;
+use day07_to_day09::linear_search;
 
 
 
@@ -52,7 +53,8 @@ fn main() {
     // shadowing::run();
     // ownership::run();
     // borrowing::run();
-    fibonacci::run();
+    // fibonacci::run();
+    linear_search::run();
 
 
 }
