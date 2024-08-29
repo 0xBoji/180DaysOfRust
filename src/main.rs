@@ -25,8 +25,11 @@ pub mod day04_to_day06;
 //Day 07 to day 09
 pub mod day07_to_day09;
 // use day07_to_day09::fibonacci;
-use day07_to_day09::linear_search;
-
+// use day07_to_day09::linear_search;
+// use day07_to_day09::binary_search;
+// use day07_to_day09::bubble_sort;
+// use day07_to_day09::palindrome_checker;
+use day07_to_day09::fibonacci_sequence;
 
 
 fn main() {
@@ -54,7 +57,11 @@ fn main() {
     // ownership::run();
     // borrowing::run();
     // fibonacci::run();
-    linear_search::run();
+    // linear_search::run();
+    // binary_search::run();
+    // bubble_sort::run();
+    // palindrome_checker::run();
+    fibonacci_sequence::run();
 
 
 }
