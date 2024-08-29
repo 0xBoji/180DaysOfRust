@@ -16,12 +16,12 @@ fn fibonacci(n: u32) -> Vec<u32> {
 }
 
 pub fn run() {
-    println!("Nhập số lượng phần tử trong dãy Fibonacci:");
+    println!("Enter the number of elements in the Fibonacci sequence:");
     let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Lỗi khi đọc input");
+    io::stdin().read_line(&mut input).expect("Error reading input");
 
-    let n: u32 = input.trim().parse().expect("Vui lòng nhập một số nguyên dương");
+    let n: u32 = input.trim().parse().expect("Please enter a positive integer");
 
     let fib_sequence = fibonacci(n);
-    println!("Dãy Fibonacci với {} phần tử: {:?}", n, fib_sequence);
+    println!("Fibonacci sequence with {} elements: {:?}", n, fib_sequence);
 }

@@ -11,17 +11,17 @@ fn bubble_sort(arr: &mut [i32]) {
     }
 }
 
-pub fn run() {
-    println!("Nhập các số nguyên, cách nhau bởi dấu cách:");
+pub fn run() {  
+    println!("Enter integers separated by spaces:");
     let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Lỗi khi đọc input");
+    io::stdin().read_line(&mut input).expect("Error reading input");
 
     let mut numbers: Vec<i32> = input
         .split_whitespace()
-        .map(|s| s.parse().expect("Lỗi khi chuyển đổi thành số"))
+        .map(|s| s.parse().expect("Error converting to number"))
         .collect();
 
-    println!("Mảng trước khi sắp xếp: {:?}", numbers);
+    println!("Array before sorting: {:?}", numbers);
     bubble_sort(&mut numbers);
-    println!("Mảng sau khi sắp xếp: {:?}", numbers);
+    println!("Array after sorting: {:?}", numbers);
 }
