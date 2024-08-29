@@ -29,8 +29,16 @@ pub mod day07_to_day09;
 // use day07_to_day09::binary_search;
 // use day07_to_day09::bubble_sort;
 // use day07_to_day09::palindrome_checker;
-use day07_to_day09::fibonacci_sequence;
+// use day07_to_day09::fibonacci_sequence;
 
+//Day 10 to day 12
+pub mod day10_to_day12;
+// use day10_to_day12::closures;
+// use day10_to_day12::error_handling;
+// use day10_to_day12::generics;
+// use day10_to_day12::iterators;
+// use day10_to_day12::lifetimes;
+// use day10_to_day12::smart_pointers;
 
 fn main() {
     //Hello world in rust
@@ -51,7 +59,7 @@ fn main() {
     // conditionals::run();
     // enums::run();
     // pointer_ref::run();
-
+    
     //Day04 to day06
     // shadowing::run();
     // ownership::run();
