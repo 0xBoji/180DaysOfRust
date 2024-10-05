@@ -31,8 +31,8 @@ async fn create_user(user: web::Json<User>) -> impl Responder {
 
 // server
 #[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    println!("Khởi động máy chủ web tại http://127.0.0.1:8080");
+pub async fn main() -> std::io::Result<()> {
+    println!("Deploy web server at http://127.0.0.1:8080");
     
     HttpServer::new(|| {
         App::new()
