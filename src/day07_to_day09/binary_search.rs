@@ -1,5 +1,16 @@
 use std::io;
+use std::cmp::Ordering;
 
+/// Performs a binary search on a sorted array.
+///
+/// # Arguments
+///
+/// * `arr` - A sorted slice of integers to search through.
+/// * `x` - The value to search for.
+///
+/// # Returns
+///
+/// Returns the index of the found element, or -1 if not found.
 fn binary_search(arr: &[i32], x: i32) -> i32 {
     let mut left = 0;
     let mut right = arr.len() - 1;
@@ -7,35 +18,33 @@ fn binary_search(arr: &[i32], x: i32) -> i32 {
     while left <= right {
         let mid = left + (right - left) / 2;
 
-        if arr[mid] == x {
-            return mid as i32;
-        }
-
-        if arr[mid] < x {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
+        match x.cmp(&arr[mid]) {
+            Ordering::Equal => return mid as i32,
+            Ordering::Greater => left = mid + 1,
+            Ordering::Less => right = mid - 1,
         }
     }
 
     -1
 }
 
+/// Runs the binary search demonstration.
 pub fn run() {
     let arr = [2, 3, 4, 10, 40, 50, 60, 70, 80, 90];
-    println!("Enter the value of x to search for:");
+    println!("Binary Search Demonstration");
+    println!("Array: {:?}", arr);
+    println!("Enter the value to search for:");
 
-    let mut x = String::new();
-    io::stdin().read_line(&mut x)
-        .expect("Error reading x value");
+    let mut input = String::new();
+    io::stdin().read_line(&mut input)
+        .expect("Failed to read line");
 
-    let x: i32 = x.trim().parse()
-        .expect("Error converting x value to a number");
+    let x: i32 = input.trim().parse()
+        .expect("Please enter a valid integer");
 
     let result = binary_search(&arr, x);
-    if result == -1 {
-        println!("Element does not exist in the array");
-    } else {
-        println!("Element found at index: {}", result);
+    match result {
+        -1 => println!("Element {} was not found in the array", x),
+        i => println!("Element {} was found at index {}", x, i),
     }
 }

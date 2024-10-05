@@ -1,13 +1,39 @@
-pub fn run(){
-    //Init a variable
+pub fn run() {
+    // Example 1: Basic shadowing
     let x = 5;
-    let x = x * 2;
-    println!("x = {}", x);
-    /*
-    In this example, let x = 5; initializes x with the value 5. Then, let x = x * 2; creates a new variable also named x, which "shadows" the original x. This isn't modifying the original x (that would be mutability), but rather creating a completely new variable with the same name. The new x has a value of 10 (5 * 2). 
-    */
+    println!("Original x: {}", x);
 
-    /*Key point:
-    Shadowing is a useful tool in Rust, allowing you to reuse variable names without losing the immutability of the original variables and offering flexible transformation in terms of data types.
-     */
+    let x = x * 2;
+    println!("Shadowed x: {}", x);
+
+    // Example 2: Shadowing with different types
+    let spaces = "   ";
+    println!("Original spaces (string): '{}'", spaces);
+
+    let spaces = spaces.len();
+    println!("Shadowed spaces (number): {}", spaces);
+
+    // Example 3: Shadowing in a smaller scope
+    let y = 10;
+    println!("Outer y: {}", y);
+
+    {
+        let y = "inner";
+        println!("Inner y: {}", y);
+    }
+
+    println!("Outer y still: {}", y);
+
+    /*
+    Shadowing in Rust allows you to declare a new variable with the same name as a previous variable.
+    This is different from mutability:
+    1. You use 'let' for each new declaration.
+    2. You can change the type of the value but reuse the same name.
+    3. The new variable shadows the previous one until the scope ends.
+
+    Key benefits:
+    - Reuse variable names without losing immutability.
+    - Transform data types while keeping a meaningful variable name.
+    - Create clearer, more readable code in certain scenarios.
+    */
 }

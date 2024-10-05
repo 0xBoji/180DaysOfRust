@@ -15,8 +15,11 @@ pub fn run() {
     }
 
     // Shorthand If: Conditional expression that returns a boolean.
-    let is_of_age = if age >= 21 { true } else { false };
-    println!("Is Of Age: {}", is_of_age)
+    let is_of_age = age >= 21;
+    println!("Is Of Age: {}", is_of_age);
+
+    // Demonstrate using a function for more complex logic
+    print_drink_suggestion(age);
 }
 
 // Additional Example: Demonstrating more complex conditional logic.
@@ -40,13 +43,39 @@ pub fn complex_conditionals() {
         _ => "large",
     };
     println!("The number is {}", description);
+
+    // Demonstrate using a function with pattern matching
+    describe_number(number);
+}
+
+// Helper function to suggest drinks based on age
+fn print_drink_suggestion(age: u8) {
+    match age {
+        0..=12 => println!("How about a nice glass of milk?"),
+        13..=20 => println!("May I suggest a refreshing soda?"),
+        21..=64 => println!("Perhaps you'd like to try our craft beer selection?"),
+        65..=u8::MAX => println!("Would you care for our finest whiskey, aged to perfection?"),
+    }
+}
+
+// Helper function to describe a number using pattern matching
+fn describe_number(n: i32) {
+    let description = match n {
+        n if n < 0 => "negative",
+        0 => "zero",
+        n if n % 2 == 0 => "positive and even",
+        _ => "positive and odd",
+    };
+    println!("The number {} is {}", n, description);
 }
 
 /* 
 Key Points:
-Basic If/Else: Checks conditions using logical operators (&&, ||). In your example, it's used to determine what the bartender says based on the customer's age and whether they have checked their ID.
-Shorthand If: A concise way to write an if statement that returns a value. In your case, it's used to determine if someone is of drinking age.
-Match Statement: A powerful control flow construct in Rust that can be used for pattern matching. It's similar to a switch-case statement in other languages but more powerful.
-Match with Ranges and Conditions: match can be used with value ranges (e.g., 1..=9) and additional conditions (e.g., number % 2 == 0).
-Match as an Expression: In Rust, match can be used as an expression to return a value. This is shown in the second example where description is assigned the result of a match expression.
+1. Basic If/Else: Checks conditions using logical operators (&&, ||).
+2. Shorthand If: A concise way to write an if statement that returns a value.
+3. Match Statement: A powerful control flow construct for pattern matching.
+4. Match with Ranges and Conditions: Can be used with value ranges and additional conditions.
+5. Match as an Expression: Can be used to return a value.
+6. Functions with Conditionals: Demonstrate how to use functions for more complex conditional logic.
+7. Pattern Matching in Functions: Show how to use pattern matching within function definitions.
 */

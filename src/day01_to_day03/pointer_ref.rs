@@ -1,25 +1,32 @@
 // Reference Pointers - Point to a resource in memory
 
 pub fn run() {
-    // Primitive Array: Stacks-allocated, fixed-size, and has value semantics.
+    demonstrate_array_behavior();
+    demonstrate_vector_behavior();
+    show_ownership_and_borrowing();
+}
+
+fn demonstrate_array_behavior() {
+    // Primitive Array: Stack-allocated, fixed-size, and has value semantics.
     let arr1 = [1, 2, 3];
-    // Array Copy: When you assign arr1 to arr2, it makes a copy of the values because arrays of primitive types implement the Copy trait.
+    // Array Copy: When you assign arr1 to arr2, it makes a copy of the values
+    // because arrays of primitive types implement the Copy trait.
     let arr2 = arr1;
 
-    // With non-primitives, Rust prevents accidental data duplication.
+    println!("Array values: {:?}", (arr1, arr2));
+}
+
+fn demonstrate_vector_behavior() {
     // Vector: Heap-allocated, resizable, and has reference semantics.
     let vec1 = vec![1, 2, 3];
     // Borrowing: vec2 holds a reference (&) to vec1. No new vector is created.
     let vec2 = &vec1;
 
-    println!("Values: {:?}", (&vec1, vec2));
-
-    // Additional Example: Demonstrating ownership and borrowing.
-    show_ownership_and_borrowing();
+    println!("Vector values: {:?}", (&vec1, vec2));
 }
 
 // Function to Show Ownership and Borrowing Concepts
-pub fn show_ownership_and_borrowing() {
+fn show_ownership_and_borrowing() {
     let s1 = String::from("hello");
     // Ownership Transfer: s1's ownership is moved to s2. s1 is no longer valid.
     let s2 = s1;
@@ -33,10 +40,29 @@ pub fn show_ownership_and_borrowing() {
 }
 
 /* 
-Key Points:
-Stack vs Heap: Primitive data types like arrays of integers are stored on the stack and exhibit value semantics, meaning they are copied on assignment. Heap-allocated types like Vec or String exhibit reference semantics.
-Ownership in Rust: Rust enforces a unique ownership system to manage memory. When you assign a non-primitive value to another variable, the ownership of that data is transferred to the new variable, and the original variable becomes invalid (unless the data type implements the Copy trait).
-Borrowing: Using a reference (&) allows you to borrow a value without taking ownership of it. This concept is crucial for working with complex data structures without unnecessary data duplication.
-Cloning: If you do need to create a deep copy of a heap-allocated data structure (like a String or a Vec), you can use the .clone() method.
-Function show_ownership_and_borrowing: Demonstrates how ownership is transferred and how data can be borrowed or cloned in Rust.
+Key Concepts:
+
+1. Stack vs Heap:
+   - Stack: Used for primitive types (like integer arrays). Fast, fixed size, value semantics.
+   - Heap: Used for dynamic types (like Vec or String). Flexible size, reference semantics.
+
+2. Ownership in Rust:
+   - Each value has a single owner.
+   - When the owner goes out of scope, the value is dropped.
+   - Assigning a non-Copy type transfers ownership.
+
+3. Borrowing:
+   - References (&) allow borrowing without taking ownership.
+   - Multiple immutable borrows or one mutable borrow at a time.
+
+4. Copy vs. Move:
+   - Types implementing Copy trait are duplicated on assignment.
+   - Other types are moved, transferring ownership.
+
+5. Cloning:
+   - .clone() creates a deep copy of heap data.
+   - Useful when you need independent copies of data.
+
+These concepts form the foundation of Rust's memory safety guarantees
+without needing a garbage collector.
 */

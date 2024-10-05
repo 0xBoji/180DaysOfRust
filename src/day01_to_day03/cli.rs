@@ -1,75 +1,75 @@
 use std::env;
 
 pub fn run() {
-    // Collecting Command Line Arguments: Args are collected into a vector of strings.
     let args: Vec<String> = env::args().collect();
-
-    // Accessing an Argument: The command is expected to be the second argument (index 1).
-    if args.len() > 1 {
-        let command = args[1].clone();
+    
+    if let Some(command) = args.get(1) {
+        handle_command(command);
     } else {
-        println!("No command provided");
-        // Handle the case where no additional argument is provided
-    }
-    // Hardcoded Variables: 'name' and 'status' are example variables for demonstration.
-    let command = args[0].clone();
-
-    let name = "Brad";
-    let status = "100%";
-
-    // Branching Logic: Different output based on the command.
-    if command == "hello" {
-        // Greeting: If the command is "hello", it prints a greeting.
-        println!("Hi {}, how are you?", name);
-    } else if command == "status" {
-        // Status: If the command is "status", it prints the status.
-        println!("Status is {}", status);
-    } else {
-        // Invalid Command: If the command is neither, it indicates invalidity.
-        println!("That is not a valid command");
+        println!("No command provided. Usage: cargo run <command>");
     }
 }
 
-// Additional Example: Demonstrating more complex argument handling and branching.
+fn handle_command(command: &str) {
+    let name = "Brad";
+    let status = "100%";
+
+    match command {
+        "hello" => println!("Hi {}, how are you?", name),
+        "status" => println!("Status is {}", status),
+        _ => println!("'{}' is not a valid command", command),
+    }
+}
+
 pub fn advanced_example() {
     let args: Vec<String> = env::args().collect();
 
-    // Checking for the Minimum Number of Arguments
     if args.len() < 2 {
-        println!("Not enough arguments");
+        println!("Usage: cargo run <command> [args...]");
         return;
     }
 
     let command = &args[1];
     match command.as_str() {
-        "greet" => {
-            // Command 'greet': Expects a name as the third argument.
-            if args.len() < 3 {
-                println!("Name not provided for 'greet'");
-            } else {
-                let name = &args[2];
-                println!("Hello, {}!", name);
-            }
-        },
-        "calculate" => {
-            // Command 'calculate': Expects two numeric arguments for addition.
-            if args.len() < 4 {
-                println!("Not enough arguments for 'calculate'");
-            } else {
-                let num1: i32 = args[2].parse().unwrap_or(0);
-                let num2: i32 = args[3].parse().unwrap_or(0);
-                println!("Sum: {}", num1 + num2);
-            }
-        },
-        _ => println!("Unknown command: {}", command),
+        "greet" => handle_greet(&args),
+        "calculate" => handle_calculate(&args),
+        _ => println!("Unknown command: {}. Available commands: greet, calculate", command),
     }
 }
 
-/* 
+fn handle_greet(args: &[String]) {
+    match args.get(2) {
+        Some(name) => println!("Hello, {}!", name),
+        None => println!("Usage: cargo run greet <name>"),
+    }
+}
+
+fn handle_calculate(args: &[String]) {
+    if args.len() < 4 {
+        println!("Usage: cargo run calculate <num1> <num2>");
+        return;
+    }
+
+    let num1: i32 = args[2].parse().unwrap_or_else(|_| {
+        println!("Error: First number is not a valid integer");
+        0
+    });
+    let num2: i32 = args[3].parse().unwrap_or_else(|_| {
+        println!("Error: Second number is not a valid integer");
+        0
+    });
+
+    println!("Sum: {}", num1 + num2);
+}
+
+/*
 Key Points:
-Command Line Arguments: The env::args() function collects command line arguments. The first argument is typically the path to the program, so real commands start from index 1.
-Conditional Logic: The if-else statements are used to execute different blocks of code based on the command.
-Match Statement: In the advanced example, a match statement is used for more complex command handling. It's more robust and cleaner, especially when dealing with multiple commands.
-Argument Parsing: The parse() method converts string arguments into other types like integers. It's used in the 'calculate' command to perform arithmetic operations.
-Error Handling: Basic error handling is demonstrated by checking the number of arguments and handling potential parsing errors with unwrap_or.
+1. Command Line Arguments: We use env::args() to collect command-line arguments.
+2. Error Handling: We provide informative error messages for invalid usage.
+3. Pattern Matching: We use match statements for cleaner command handling.
+4. Function Separation: We've separated concerns into different functions for better organization.
+5. Argument Parsing: We use parse() to convert string arguments to integers, with error handling.
+6. Slices: We use slices (&[String]) to pass arguments around, which is more flexible than Vec<String>.
+7. Option and Result: We leverage Rust's Option and Result types for safer code.
+8. Descriptive Comments: We've kept the key points to explain the code structure and Rust features used.
 */

@@ -1,47 +1,68 @@
-// Primitive Types
+// Primitive Types in Rust
 // Integers: u8, i8, u16, i16, u32, i32, u64, i64, u128, i128 (number of bits they take in memory)
 // Floats: f32, f64
 // Boolean (bool)
 // Characters (char)
+// Compound Types:
 // Tuples
 // Arrays
 
 pub fn run() {
-    // Integer Type: The default is "i32", a 32-bit signed integer.
-    let x = 1;
+    // Integer Types
+    let x: i32 = 1;  // 32-bit signed integer (default integer type)
+    let y: u64 = 100;  // 64-bit unsigned integer
 
-    // Floating-Point Type: The default is "f64", a 64-bit floating-point number.
-    let y = 2.5;
+    // Floating-Point Types
+    let z: f64 = 2.5;  // 64-bit float (default float type)
+    let w: f32 = 3.7;  // 32-bit float
 
-    // Explicit Type Annotation: Here, "z" is explicitly annotated as "i64", a 64-bit signed integer.
-    let z: i64 = 45454545454545;
-
-    // Finding Maximum Value: Demonstrates how to find the maximum value for integer types.
+    // Finding Maximum Values for Integer Types
     println!("Max i32: {}", std::i32::MAX);
-    println!("Max i64: {}", std::i64::MAX);
+    println!("Max u64: {}", std::u64::MAX);
 
-    // Boolean Type: "is_active" is a variable of type "bool" which represents a boolean value.
+    // Boolean Type
     let is_active: bool = true;
+    let is_greater: bool = 10 > 5;
 
-    // Boolean from Expression: "is_greater" is a boolean obtained from evaluating the expression "10 < 5".
-    let is_greater: bool = 10 < 5;
+    // Character Type
+    let a1: char = 'a';  // Regular ASCII
+    let face: char = '\u{1F600}';  // Unicode emoji
 
-    // Character Type: "a1" is a character type, 'char', representing a single Unicode scalar value.
-    let a1 = 'a';
+    // Tuple Type (can contain different types)
+    let tuple: (i32, f64, char, bool) = (x, z, a1, is_active);
 
-    // Unicode Scalar Values: "face" is a 'char' type representing a Unicode emoji using its code point.
-    let face = '\u{1F600}';
+    // Array Type (fixed length, same type)
+    let array: [i32; 5] = [1, 2, 3, 4, 5];
 
-    // Tuple: Demonstrates a tuple containing different types.
-    println!("{:?}", (x, y, z, is_active, is_greater, a1, face));
+    // Print examples of each type
+    println!("Integer (i32): {}", x);
+    println!("Unsigned Integer (u64): {}", y);
+    println!("Float (f64): {}", z);
+    println!("Float (f32): {}", w);
+    println!("Boolean: {}", is_active);
+    println!("Boolean from expression: {}", is_greater);
+    println!("Character: {}", a1);
+    println!("Unicode Character: {}", face);
+    println!("Tuple: {:?}", tuple);
+    println!("Array: {:?}", array);
 }
 
+/*
+Key Points:
+1. Integer Types: Rust provides both signed (i8, i16, i32, i64, i128) and unsigned (u8, u16, u32, u64, u128) integers. 
+   The number indicates the bits used in memory. Default is i32.
 
-/*Key point:
-Integer Types: Rust provides both signed (i8, i16, i32, i64, i128) and unsigned (u8, u16, u32, u64, u128) integers. The number (e.g., 8, 16, 32) indicates the number of bits used in memory.
-Floating-Point Types: There are two floating-point types, f32 and f64, corresponding to 32-bit and 64-bit floating-point numbers, respectively.
-Boolean: The bool type represents a Boolean value, which can be either true or false.
-Character: The char type is a Unicode scalar value ranging from U+0000 to U+D7FF and U+E000 to U+10FFFF.
-Tuples: A compound type that can group together a variety of types. Tuple members are accessed by their position.
-Arrays: Collections of elements of the same type. Arrays have a fixed length and the elements are stored next to each other in memory.
-*/ 
+2. Floating-Point Types: f32 (32-bit) and f64 (64-bit). Default is f64.
+
+3. Boolean: The bool type represents a value of either true or false.
+
+4. Character: The char type is a Unicode scalar value, always 4 bytes in size.
+
+5. Tuples: A compound type that can group multiple types. Elements accessed by index.
+
+6. Arrays: Fixed-length collections of elements of the same type. Size is part of the type signature.
+
+7. Type Inference: Rust can often infer types, but explicit type annotations improve readability and prevent errors.
+
+8. Memory Safety: Rust's type system and ownership rules prevent many common programming errors at compile-time.
+*/

@@ -1,32 +1,38 @@
 pub fn run() {
+    // Create a mutable String to represent our book
     let mut book = String::from("The Rust Programming Language");
 
-    read_book(&book); 
+    // First, we read the book (immutable borrow)
+    read_book(&book);
 
-    annotate_book(&mut book, " - What a nice book!"); 
+    // Then, we annotate the book (mutable borrow)
+    annotate_book(&mut book, " - What a nice book!");
 
-    read_book(&book); 
+    // We can read the book again after annotation (immutable borrow)
+    read_book(&book);
 
-    println!("I am still got a book: {}", book);
-    }
+    // The book is still available in the main function
+    println!("I still have the book: {}", book);
+}
 
-    fn read_book(book: &String) {
-        println!("Reading: {}", book);
-    }
+// This function takes an immutable reference to the book
+fn read_book(book: &String) {
+    println!("Reading: {}", book);
+}
 
-    fn annotate_book(book: &mut String, note: &str) {
-        book.push_str(note);
-        println!("Added annotate to book");
-    }
+// This function takes a mutable reference to the book and a note to add
+fn annotate_book(book: &mut String, note: &str) {
+    book.push_str(note);
+    println!("Added annotation to book");
+}
 
+/*
+Expected Output:
+Reading: The Rust Programming Language
+Added annotation to book
+Reading: The Rust Programming Language - What a nice book!
+I still have the book: The Rust Programming Language - What a nice book!
+*/
 
-    /*
-    Output:
-    Đang đọc: The Rust Programming Language
-    Đã add ghi chú vào book
-    Đang đọc: The Rust Programming Language - Sách hay!
-    Tôi vẫn sở hữu book: The Rust Programming Language - Sách hay!
-    */
-    /*
-    book.push_str(note); thay đổi nội dung của book.
-    */
+// Note: book.push_str(note) in annotate_book() modifies the content of the book.
+// This is possible because we passed a mutable reference to the function.
