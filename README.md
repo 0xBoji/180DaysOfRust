@@ -1,5 +1,5 @@
 ## 180 Days of Rust Exploration
-My name is Pich Tran, also known as 0xBoji. 
+My name is <strong>Pich Tran</strong>, also known as <strong>0xBoji</strong>. 
 
 This repository documents my 180-day journey exploring the fascinating world of the Rust programming language. Whether you are a novice or a seasoned developer, this repository offers a wealth of knowledge.
 # 🔍 Explore In-Depth Articles
