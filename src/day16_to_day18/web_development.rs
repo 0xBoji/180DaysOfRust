@@ -8,15 +8,34 @@ struct User {
     name: String,
 }
 
+/// Represents query parameters for filtering users
+#[derive(Deserialize)]
+struct UserFilter {
+    name: Option<String>,
+}
+
 /// Handles GET request to retrieve all users
 ///
-/// Returns a JSON array of all users in the system
-async fn get_users() -> impl Responder {
+/// # Arguments
+///
+/// * `query` - Query parameters for filtering users
+///
+/// Returns a JSON array of filtered users in the system
+async fn get_users(query: web::Query<UserFilter>) -> impl Responder {
     let users = vec![
         User { id: 1, name: "Alice".to_string() },
         User { id: 2, name: "Bob".to_string() },
+        User { id: 3, name: "Charlie".to_string() },
+        User { id: 4, name: "Bobby Pickle".to_string() },
     ];
-    HttpResponse::Ok().json(users)
+
+    let filtered_users: Vec<User> = users.into_iter()
+        .filter(|user| {
+            query.name.as_ref().map_or(true, |name| user.name.to_lowercase().contains(&name.to_lowercase()))
+        })
+        .collect();
+
+    HttpResponse::Ok().json(filtered_users)
 }
 
 /// Handles GET request to retrieve a specific user by ID
@@ -55,9 +74,12 @@ pub async fn main() -> std::io::Result<()> {
     
     HttpServer::new(|| {
         App::new()
-            .route("/users", web::get().to(get_users))
-            .route("/users/{id}", web::get().to(get_user))
-            .route("/users", web::post().to(create_user))
+            .service(
+                web::scope("/api/v1")
+                    .route("/users", web::get().to(get_users))
+                    .route("/users/{id}", web::get().to(get_user))
+                    .route("/users", web::post().to(create_user))
+            )
     })
     .bind((HOST, PORT))?
     .run()
