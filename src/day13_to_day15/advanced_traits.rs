@@ -103,6 +103,7 @@ trait Animal {
 struct Dog;
 
 impl Dog {
+    #[allow(dead_code)]
     fn baby_name() -> String {
         String::from("Spot")
     }

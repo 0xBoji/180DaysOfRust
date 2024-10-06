@@ -74,6 +74,6 @@ fn multiple_lifetime_example() {
 
 /// A function that takes two string slices with different lifetimes and returns the longer one.
 /// The returned reference is guaranteed to live at least as long as the shorter of 'a and 'b.
-fn longest<'a, 'b>(x: &'a str, y: &'b str) -> &'a str {
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() { x } else { y }
 }

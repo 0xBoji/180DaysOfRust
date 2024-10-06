@@ -2,6 +2,7 @@
 
 pub fn run() {
     // Infinite Loop Example
+    #[allow(dead_code)]
     fn infinite_loop_example() {
         let mut count = 0;
         loop {
@@ -14,6 +15,7 @@ pub fn run() {
     }
 
     // While Loop Example with FizzBuzz
+    #[allow(dead_code)]
     fn while_loop_fizzbuzz() {
         let mut count = 1;
         while count <= 100 {

@@ -9,7 +9,7 @@ pub mod traits;
 pub fn run() {
     println!("Days 10-12: Advanced Rust Concepts");
     closures::examples();
-    error_handling::examples();
+    let _ = error_handling::examples();
     generics::examples();
     iterators::examples();
     lifetimes::examples();

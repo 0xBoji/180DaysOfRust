@@ -36,7 +36,7 @@ impl Shape for Rectangle {
 }
 
 // Function to print shape information
-fn print_shape_info(shape: &impl Shape) {
+fn print_shape_info(shape: &dyn Shape) {
     println!("{} area: {:.2}", shape.name(), shape.area());
 }
 
@@ -56,6 +56,6 @@ pub fn examples() {
     ];
 
     for shape in shapes.iter() {
-        print_shape_info(shape.as_ref());
+        print_shape_info(&**shape);
     }
 }

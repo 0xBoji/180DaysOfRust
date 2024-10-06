@@ -31,6 +31,7 @@ struct Point {
 }
 
 impl Point {
+    #[allow(dead_code)]
     fn new(x: i32, y: i32) -> Self {
         Point { x, y }
     }

@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub fn run() {
     // Example 1: Basic shadowing
     let x = 5;
@@ -24,6 +26,11 @@ pub fn run() {
 
     println!("Outer y still: {}", y);
 
+    // Example 4: Shadowing with functions
+    let message = String::from("Hello");
+    let message = announce(message);
+    println!("Announced message: {}", message);
+
     /*
     Shadowing in Rust allows you to declare a new variable with the same name as a previous variable.
     This is different from mutability:
@@ -36,4 +43,8 @@ pub fn run() {
     - Transform data types while keeping a meaningful variable name.
     - Create clearer, more readable code in certain scenarios.
     */
+}
+
+fn announce<T: Display>(value: T) -> String {
+    format!("Announcing: {}", value)
 }

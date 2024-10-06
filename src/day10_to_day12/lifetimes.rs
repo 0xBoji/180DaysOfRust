@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub fn examples() {
     println!("Lifetimes Examples:");
     
@@ -11,8 +13,8 @@ pub fn examples() {
     let string3 = String::from("very long string");
     let result2;
     {
-        let string4 = String::from("tiny");
-        result2 = longest(&string3, &string4);
+        let _string4 = String::from("tiny");
+        result2 = longest(&string3, &string3);
     }
     println!("Longest string from example 2: {}", result2);
 
@@ -20,6 +22,10 @@ pub fn examples() {
     let static_string: &'static str = "I have a static lifetime";
     let result3 = longest(static_string, "Short lived");
     println!("Longest string with static lifetime: {}", result3);
+
+    // Example 4: Using longest_with_announcement
+    let result4 = longest_with_announcement(&string1, &string2, "Comparing strings");
+    println!("Longest string with announcement: {}", result4);
 }
 
 // The lifetime parameter 'a specifies that the references x and y
