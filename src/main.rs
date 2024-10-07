@@ -16,12 +16,16 @@ pub mod day13_to_day15;
 //Day 16 to day 18
 pub mod day16_to_day18;
 
+//Day 19 to day 21
+pub mod day19_to_day21;
+
 fn main() {
     // day01_to_day03::run();
     // day04_to_day06::run();
     // day07_to_day09::run();
     // day10_to_day12::run();
     // day13_to_day15::run();
-    day16_to_day18::run();
+    // day16_to_day18::run();
+    day19_to_day21::run();
 
 }
