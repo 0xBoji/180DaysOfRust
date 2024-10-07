@@ -69,7 +69,9 @@ async fn create_user(user: web::Json<User>) -> impl Responder {
 pub async fn main() -> std::io::Result<()> {
     const HOST: &str = "127.0.0.1";
     const PORT: u16 = 8080;
-
+    // Run to get all users http://127.0.0.1:8080/api/v1/users
+    // Run to get user with id 1 http://127.0.0.1:8080/api/v1/users/1
+    // Run to get filter user http://127.0.0.1:8080/api/v1/users
     println!("Starting web server at http://{}:{}", HOST, PORT);
     
     HttpServer::new(|| {
