@@ -15,3 +15,5 @@ axum = "0.7.7"
 # # utoipa-swagger-ui = { version = "7.1.0", features = ["actix-web"] }
 utoipa = { version = "4.2.3", features = ["axum_extras"] }
 utoipa-swagger-ui = { version = "7.1.0", features = ["axum"] }
+tokio-postgres = "0.7"
+deadpool-postgres = "0.10"
